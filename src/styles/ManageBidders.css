@@ -1,0 +1,101 @@
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.bidders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bidders-table thead {
+  background: var(--light);
+}
+
+.bidders-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.bidders-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.bidders-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.bidders-table tbody tr:hover {
+  background: var(--light);
+}
+
+.status-badge.active {
+  background: #d4f4dd;
+  color: #00a86b;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.frozen {
+  background: #e3f2fd;
+  color: #0078d4;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-warning {
+  background: #fff4e5;
+  color: #ff8c00;
+}
+
+.btn-warning:hover {
+  background: #ff8c00;
+  color: white;
+}
+
+.btn-info {
+  background: #e3f2fd;
+  color: #0078d4;
+}
+
+.btn-info:hover {
+  background: #0078d4;
+  color: white;
+}
+
+.btn-danger {
+  background: #fee;
+  color: #e81123;
+}
+
+.btn-danger:hover {
+  background: #e81123;
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

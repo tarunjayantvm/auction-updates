@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Auction Event | Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2 class="logo">🏏 Auction Admin</h2>
+        <ul>
+            <li onclick="goTo('dashboard.html')">Dashboard</li>
+            <li class="active">Create Event</li>
+            <li onclick="goTo('manage_players.html')">Manage Players</li>
+            <li onclick="goTo('manage_bidders.html')">Manage Bidders</li>
+            <li onclick="goTo('settings.html')">Settings</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+        <h1>Create Auction Event</h1>
+
+        <div class="section">
+
+            <label>Event Name:</label>
+            <input type="text" id="event_name" placeholder="Enter auction event name">
+
+            <label>Date:</label>
+            <input type="date" id="event_date">
+
+            <label>Auction Type:</label>
+            <select id="event_type">
+                <option value="Mega Auction">Mega Auction</option>
+                <option value="Mini Auction">Mini Auction</option>
+                <option value="Special Auction">Special Auction</option>
+            </select>
+
+            <label>Upload Player List (CSV / Excel):</label>
+            <input type="file" id="player_file" accept=".csv,.xls,.xlsx">
+
+            <label>Activate Event Visibility:</label>
+            <select id="event_status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+
+            <button class="btn start" onclick="saveEvent()">Save Event</button>
+            <button class="btn stop" onclick="resetForm()">Reset</button>
+
+        </div>
+
+        <h2>Created Events</h2>
+        <div class="section" id="event_list">
+            <p>No events created yet.</p>
+        </div>
+
+    </div>
+
+<script>
+    function goTo(page){ window.location.href = page; }
+    function logout(){ alert("Logged out!"); window.location.href="../index.html"; }
+
+    function saveEvent(){
+        let name = document.getElementById("event_name").value;
+        let date = document.getElementById("event_date").value;
+        let type = document.getElementById("event_type").value;
+        let status = document.getElementById("event_status").value;
+
+        if(name === "" || date === ""){
+            alert("Please fill all details.");
+            return;
+        }
+
+        let list = document.getElementById("event_list");
+        let item = document.createElement("p");
+        item.innerHTML = `<b>${name}</b> — ${date} — ${type} — <span style="color:${status==='active'?'green':'red'}">${status}</span>`;
+        list.appendChild(item);
+
+        alert("Event Created Successfully!");
+    }
+
+    function resetForm(){
+        document.getElementById("event_name").value = "";
+        document.getElementById("event_date").value = "";
+        document.getElementById("player_file").value = "";
+    }
+</script>
+
+</body>
+</html>

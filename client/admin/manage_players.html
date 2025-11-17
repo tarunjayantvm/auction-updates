@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Players | Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2 class="logo">🏏 Auction Admin</h2>
+        <ul>
+            <li onclick="goTo('dashboard.html')">Dashboard</li>
+            <li onclick="goTo('create_event.html')">Create Event</li>
+            <li class="active">Manage Players</li>
+            <li onclick="goTo('manage_bidders.html')">Manage Bidders</li>
+            <li onclick="goTo('settings.html')">Settings</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+        <h1>Manage Players</h1>
+
+        <div class="section">
+
+            <label>Name:</label>
+            <input type="text" id="p_name" placeholder="Player name">
+
+            <label>Country:</label>
+            <input type="text" id="p_country" placeholder="Country">
+
+            <label>Role:</label>
+            <select id="p_role">
+                <option>Batsman</option>
+                <option>Bowler</option>
+                <option>All-rounder</option>
+                <option>Wicket Keeper</option>
+            </select>
+
+            <label>Batting Style:</label>
+            <input type="text" id="p_bat">
+
+            <label>Bowling Style:</label>
+            <input type="text" id="p_bowl">
+
+            <label>Runs:</label>
+            <input type="number" id="p_runs">
+
+            <label>Average:</label>
+            <input type="number" id="p_avg">
+
+            <label>Strike Rate:</label>
+            <input type="number" id="p_sr">
+
+            <label>Wickets:</label>
+            <input type="number" id="p_wkts">
+
+            <label>Economy Rate:</label>
+            <input type="number" id="p_er">
+
+            <label>Base Price (₹ Lakhs):</label>
+            <input type="number" id="p_base">
+
+            <label>Upload Player Image:</label>
+            <input type="file" id="p_photo" accept="image/*">
+
+            <button class="btn start" onclick="addPlayer()">Add Player</button>
+
+        </div>
+
+        <h2>Player List</h2>
+        <div class="section">
+            <table id="player_table">
+                <tr>
+                    <th>Name</th><th>Role</th><th>Runs</th><th>Wickets</th><th>Base Price</th><th>Action</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+<script>
+    function goTo(page){ window.location.href = page; }
+    function logout(){ alert("Logged out!"); window.location.href="../index.html"; }
+
+    function addPlayer(){
+        let name = document.getElementById("p_name").value;
+        let role = document.getElementById("p_role").value;
+        let runs = document.getElementById("p_runs").value;
+        let wkts = document.getElementById("p_wkts").value;
+        let base = document.getElementById("p_base").value;
+
+        if(name === ""){
+            alert("Enter player details!");
+            return;
+        }
+
+        let table = document.getElementById("player_table");
+        let row = table.insertRow(-1);
+
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${role}</td>
+            <td>${runs}</td>
+            <td>${wkts}</td>
+            <td>₹${base} L</td>
+            <td>
+                <button onclick="editPlayer(this)">Edit</button>
+                <button onclick="deletePlayer(this)">Delete</button>
+            </td>
+        `;
+    }
+
+    function deletePlayer(btn){
+        btn.parentNode.parentNode.remove();
+    }
+
+    function editPlayer(btn){
+        alert("Edit function coming soon!");
+    }
+
+</script>
+
+</body>
+</html>

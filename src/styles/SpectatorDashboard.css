@@ -1,0 +1,200 @@
+.spectator-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
+}
+
+.spectator-header {
+  background: linear-gradient(135deg, #ff8c00, #ff6b00);
+  padding: 24px 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.spectator-header h1 {
+  color: white;
+  font-size: 28px;
+}
+
+.spectator-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.intro-section {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.intro-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: linear-gradient(135deg, #ff8c00, #ff6b00);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(255, 140, 0, 0.3);
+}
+
+.intro-icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.intro-section h2 {
+  font-size: 36px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.intro-section p {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.events-section h2 {
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.event-badge {
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #fff9f0, #ffe8d6);
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.live-indicator.active {
+  background: #ff3b3b;
+  color: white;
+}
+
+.live-indicator.inactive {
+  background: var(--border);
+  color: var(--text-secondary);
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.event-content {
+  padding: 28px 24px;
+}
+
+.event-content h3 {
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.viewers-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.viewers-count svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-watch {
+  width: 100%;
+  background: linear-gradient(135deg, #ff8c00, #ff6b00);
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-watch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+}
+
+.btn-watch svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-waiting {
+  width: 100%;
+  background: var(--border);
+  color: var(--text-secondary);
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .spectator-main {
+    padding: 32px 20px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-section h2 {
+    font-size: 28px;
+  }
+}

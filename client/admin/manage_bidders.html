@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Bidders | Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2 class="logo">🏏 Auction Admin</h2>
+        <ul>
+            <li onclick="goTo('dashboard.html')">Dashboard</li>
+            <li onclick="goTo('create_event.html')">Create Event</li>
+            <li onclick="goTo('manage_players.html')">Manage Players</li>
+            <li class="active">Manage Bidders</li>
+            <li onclick="goTo('settings.html')">Settings</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h1>Manage Bidders</h1>
+
+        <!-- ADD BIDDER -->
+        <div class="section">
+            <h2>Add New Bidder</h2>
+
+            <label>Bidder Name:</label>
+            <input type="text" id="bidder_name" placeholder="Enter bidder/team name">
+
+            <label>Team Purse (₹ in Crores):</label>
+            <input type="number" id="bidder_purse" placeholder="e.g., 20">
+
+            <button class="btn start" onclick="addBidder()">Add Bidder</button>
+        </div>
+
+        <!-- BIDDER LIST -->
+        <div class="section">
+            <h2>Registered Bidders</h2>
+
+            <table id="bidder_table">
+                <tr>
+                    <th>Name</th>
+                    <th>Purse</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+<!-- JAVASCRIPT -->
+<script>
+    function goTo(page){ window.location.href = page; }
+    function logout(){ 
+        alert("Logged out!"); 
+        window.location.href = "../index.html"; 
+    }
+
+    function addBidder() {
+        let name = document.getElementById("bidder_name").value;
+        let purse = document.getElementById("bidder_purse").value;
+
+        if(name === "" || purse === ""){
+            alert("Please fill all bidder details.");
+            return;
+        }
+
+        let table = document.getElementById("bidder_table");
+        let row = table.insertRow(-1);
+
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>₹${purse} Cr</td>
+            <td><span class="status on">Active</span></td>
+            <td>
+                <button onclick="freezeBidder(this)">Freeze</button>
+                <button onclick="unfreezeBidder(this)">Unfreeze</button>
+                <button onclick="resetPassword('${name}')">Reset Password</button>
+                <button onclick="kickBidder(this)">Kick</button>
+            </td>
+        `;
+
+        document.getElementById("bidder_name").value = "";
+        document.getElementById("bidder_purse").value = "";
+        alert("Bidder added successfully!");
+    }
+
+    function freezeBidder(btn){
+        let status = btn.parentNode.parentNode.children[2].children[0];
+        status.innerText = "Frozen";
+        status.classList.remove("on");
+        status.classList.add("off");
+        alert("Bidder frozen — cannot bid now.");
+    }
+
+    function unfreezeBidder(btn){
+        let status = btn.parentNode.parentNode.children[2].children[0];
+        status.innerText = "Active";
+        status.classList.remove("off");
+        status.classList.add("on");
+        alert("Bidder unfrozen — can bid again.");
+    }
+
+    function kickBidder(btn){
+        if(confirm("Remove this bidder from auction?")){
+            btn.parentNode.parentNode.remove();
+        }
+    }
+
+    function resetPassword(name){
+        alert("Password reset for: " + name + " to default — bidder#135");
+    }
+</script>
+
+</body>
+</html>

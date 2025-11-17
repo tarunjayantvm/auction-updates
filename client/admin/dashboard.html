@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Cricket Auction</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2 class="logo">🏏 Auction Admin</h2>
+
+        <ul>
+            <li class="active">Dashboard</li>
+            <li onclick="goTo('create_event.html')">Create Event</li>
+            <li onclick="goTo('manage_players.html')">Manage Players</li>
+            <li onclick="goTo('manage_bidders.html')">Manage Bidders</li>
+            <li onclick="goTo('settings.html')">Settings</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+        <h1>Admin Dashboard</h1>
+
+        <!-- STAT CARDS -->
+        <div class="row">
+
+            <div class="card blue">
+                <h3>Total Players</h3>
+                <p id="player_count">0</p>
+            </div>
+
+            <div class="card green">
+                <h3>Total Bidders</h3>
+                <p id="bidder_count">0</p>
+            </div>
+
+            <div class="card purple">
+                <h3>Active Events</h3>
+                <p id="event_count">0</p>
+            </div>
+
+        </div>
+
+        <!-- LIVE AUCTION CONTROL -->
+        <div class="section">
+            <h2>Live Auction Control</h2>
+
+            <div class="control-box">
+                <p>Status: <span id="auction_status" class="status off">OFF</span></p>
+
+                <button class="btn start" onclick="startAuction()">Start Auction</button>
+                <button class="btn stop" onclick="stopAuction()">Stop Auction</button>
+            </div>
+        </div>
+
+        <!-- LIMIT BIDDER ENTRY -->
+        <div class="section">
+            <h2>Bidder Entry Limit</h2>
+
+            <label>Maximum Bidders Allowed:</label>
+            <input type="number" id="bidder_limit" placeholder="Enter limit">
+
+            <button class="btn save" onclick="saveLimit()">Save Limit</button>
+        </div>
+
+        <!-- LIVE LOGS SECTION -->
+        <div class="section">
+            <h2>Live System Logs</h2>
+
+            <div class="log-box" id="log_box">
+                <p>System initialized...</p>
+            </div>
+        </div>
+
+    </div>
+
+<script src="../js/socket.js"></script>
+<script>
+    function goTo(page) {
+        window.location.href = page;
+    }
+
+    function logout() {
+        alert("Logged out!");
+        window.location.href = "../index.html";
+    }
+
+    function startAuction() {
+        document.getElementById("auction_status").innerText = "ON";
+        document.getElementById("auction_status").classList.remove("off");
+        document.getElementById("auction_status").classList.add("on");
+
+        addLog("Auction started by admin.");
+    }
+
+    function stopAuction() {
+        document.getElementById("auction_status").innerText = "OFF";
+        document.getElementById("auction_status").classList.remove("on");
+        document.getElementById("auction_status").classList.add("off");
+
+        addLog("Auction stopped by admin.");
+    }
+
+    function saveLimit() {
+        let limit = document.getElementById("bidder_limit").value;
+
+        if(limit === "" || limit <= 0) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        addLog("Bidder limit set to: " + limit);
+        alert("Bidder limit saved!");
+    }
+
+    function addLog(text) {
+        let box = document.getElementById("log_box");
+        let p = document.createElement("p");
+        p.innerText = text;
+        box.appendChild(p);
+        box.scrollTop = box.scrollHeight;
+    }
+</script>
+
+</body>
+</html>

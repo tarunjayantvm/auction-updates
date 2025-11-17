@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bidder Dashboard</title>
+    <link rel="stylesheet" href="bidder.css">
+</head>
+<body>
+
+<header>
+    <h2>Bidder Dashboard</h2>
+    <button class="logout" onclick="location.href='../index.html'">Logout</button>
+</header>
+
+<section class="purse">
+    <h3>Your Team Purse</h3>
+    <p class="amount">₹ 50,00,000</p>
+</section>
+
+<section class="events">
+    <h2>Live Auction Events</h2>
+
+    <div class="event-card">
+        <h3>Namma Cricket Premier League Auction</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <button onclick="location.href='auction_room.html'">Join Auction</button>
+    </div>
+
+    <div class="event-card inactive">
+        <h3>Test Series Elite Auction</h3>
+        <p>Status: <span class="inactive-text">Not Active</span></p>
+        <button disabled>Waiting…</button>
+    </div>
+
+</section>
+
+</body>
+</html>

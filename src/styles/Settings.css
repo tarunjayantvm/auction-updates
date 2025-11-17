@@ -1,0 +1,15 @@
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.settings-grid .card {
+  height: fit-content;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spectator Dashboard</title>
+    <link rel="stylesheet" href="spectator.css">
+</head>
+<body>
+
+<header>
+    <h2>Spectator Dashboard</h2>
+    <button class="logout" onclick="location.href='../index.html'">Logout</button>
+</header>
+
+<section class="events">
+    <h2>Live Auctions</h2>
+
+    <div class="event-card">
+        <h3>Namma Cricket Premier League Auction</h3>
+        <p>Status: <span class="active">Active</span></p>
+        <button onclick="location.href='watch_live.html'">Watch Live</button>
+    </div>
+
+    <div class="event-card inactive">
+        <h3>Legends Cricket Auction</h3>
+        <p>Status: <span class="inactive-text">Not Active</span></p>
+        <button disabled>Waiting…</button>
+    </div>
+
+</section>
+
+</body>
+</html>
